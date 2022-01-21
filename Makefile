@@ -6,7 +6,7 @@
 #    By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/21 16:57:12 by psoto-go          #+#    #+#              #
-#    Updated: 2022/01/21 16:57:58 by psoto-go         ###   ########.fr        #
+#    Updated: 2022/01/21 17:34:45 by psoto-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ CFLAGS			= -Wall -Wextra -Werror
 MAKE			= make
 LIBFT			= libft
 NAME			= so_long
+
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 all:			$(NAME)
 
