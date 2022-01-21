@@ -6,11 +6,11 @@
 #    By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/21 16:57:12 by psoto-go          #+#    #+#              #
-#    Updated: 2022/01/21 17:34:45 by psoto-go         ###   ########.fr        #
+#    Updated: 2022/01/21 18:09:01 by psoto-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			=	
+SRCS			=	srcs/main.c
 OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
@@ -21,13 +21,13 @@ LIBFT			= libft
 NAME			= so_long
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+				$(CC) $(CFLAGS) -I includes/mlx -c $< -o $@
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
 				$(MAKE) all -C $(LIBFT)
-				$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
+				$(CC) $(CFLAGS) $(OBJS) libft/libft.a -Lincludes/mlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 				$(RM) $(OBJS)
