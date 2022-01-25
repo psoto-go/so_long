@@ -6,7 +6,7 @@
 #    By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/21 16:57:12 by psoto-go          #+#    #+#              #
-#    Updated: 2022/01/21 18:09:01 by psoto-go         ###   ########.fr        #
+#    Updated: 2022/01/25 14:29:35 by psoto-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,22 +19,27 @@ CFLAGS			= -Wall -Wextra -Werror
 MAKE			= make
 LIBFT			= libft
 NAME			= so_long
+MLX				= mlx
+
 
 %.o: %.c
-				$(CC) $(CFLAGS) -I includes/mlx -c $< -o $@
+				$(CC) $(CFLAGS) -I includes/ -Imlx -c $< -o $@
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
+				$(MAKE) all -C $(MLX)
 				$(MAKE) all -C $(LIBFT)
-				$(CC) $(CFLAGS) $(OBJS) libft/libft.a -Lincludes/mlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+				$(CC) $(CFLAGS) $(OBJS) libft/libft.a -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
+				$(MAKE) clean -C $(MLX)
+				$(MAKE) clean -C $(LIBFT)
 				$(RM) $(OBJS)
-				$(MAKE) clean -C ./libft/
+
 
 fclean:			clean
-				$(MAKE) fclean -C ./libft/
+				$(MAKE) fclean -C $(LIBFT)
 				$(RM) $(NAME)
 
 re:				fclean $(NAME)
