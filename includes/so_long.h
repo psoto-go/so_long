@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/25 15:22:04 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/26 18:33:44 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,15 @@
 # include <mlx.h>
 # include "../libft/libft.h"
 
-// typedef struct	s_data {
-// 	void	*img;
-// 	char	*addr;
-// 	int		bits_per_pixel;
-// 	int		line_length;
-// 	int		endian;
-// }	t_data;
-
-
+typedef struct	mlx {
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	char 	*path;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+} t_mlx;
 
 #endif
