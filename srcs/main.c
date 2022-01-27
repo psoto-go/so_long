@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/26 18:56:06 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 13:37:10 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,34 @@ int	key_hook_out(int x ,int y)
 	return (0);
 }
 
+int		exit_mlx(t_mlx *mlx)
+{
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	exit(0);
+	return(0);
+}
+
+int 	check_key(int keycode, t_mlx *mlx)
+{
+	if (keycode == 53)
+		exit_mlx(mlx);
+	return (0);
+}
+
+
 void	init_mlx(t_mlx *mlx)
 {
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, 1000, 1000, "so_long");
 	mlx->img = mlx_new_image(mlx->mlx, 1000, 1000);
-	// mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bits_per_pixel, &mlx->line_length,
-	// 							&mlx->endian);
-	char	*relative_path = "/Users/psoto-go/Desktop/so_long/img/mar.xpm";
-	int		img_width;
-	int		img_height;
+}
 
-	mlx->img = mlx_xpm_file_to_image(mlx->mlx, relative_path, &img_width, &img_height);
+
+void	setup(t_mlx *mlx)
+{
+	mlx_hook(mlx->win, 2, 1L<<0, check_key, mlx);
+	mlx_hook(mlx->win, 17, 1L<<2, exit_mlx, mlx);
+
 	mlx_loop(mlx->mlx);
 }
 
@@ -75,6 +91,8 @@ int	main(int argc, char **argv)
 	}
 
 	init_mlx(&mlx);
+	setup(&mlx);
+	return(0);
 
 
 
