@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/26 18:33:44 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:09:18 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ typedef struct	mlx {
 	void	*win;
 	void	*img;
 	char	*addr;
-	char 	*path;
+	char	**map;
+	int		x;
+	int		y;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
