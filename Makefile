@@ -6,11 +6,11 @@
 #    By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/21 16:57:12 by psoto-go          #+#    #+#              #
-#    Updated: 2022/01/25 14:29:35 by psoto-go         ###   ########.fr        #
+#    Updated: 2022/01/28 15:45:59 by psoto-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			=	srcs/main.c
+SRCS			=	srcs/main.c srcs/control_map.c srcs/errors.c
 OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
@@ -20,10 +20,6 @@ MAKE			= make
 LIBFT			= libft
 NAME			= so_long
 MLX				= mlx
-
-
-%.o: %.c
-				$(CC) $(CFLAGS) -I includes/ -Imlx -c $< -o $@
 
 all:			$(NAME)
 
