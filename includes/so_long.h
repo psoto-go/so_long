@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/28 18:28:42 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/28 20:14:47 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ typedef struct	map {
 typedef struct	mlx {
 	void	*mlx;
 	void	*win;
-	void	*img;
+	void	*img1;
+	void	*img2;
+	void	*img3;
+	void	*img4;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;

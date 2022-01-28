@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/28 18:29:00 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/28 20:15:04 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,26 @@ int 	check_key(int keycode, t_mlx *mlx)
 	return (0);
 }
 
+void	load_images(t_mlx *mlx)
+{
+	char	*p1;
+	char	*p2;
+	char	*p3;
+	char	*p4;
+
+	p1 = "img/surf.xpm";
+	p2 = "img/surf1.xpm";
+	p3 = "img/surf2.xpm";
+	p4 = "img/surf3.xpm";
+
+	mlx->img1 = mlx_xpm_file_to_image(mlx->mlx, p1, &mlx->map.x, &mlx->map.y);
+	mlx->img2 = mlx_xpm_file_to_image(mlx->mlx, p2, &mlx->map.x, &mlx->map.y);
+	mlx->img3 = mlx_xpm_file_to_image(mlx->mlx, p3, &mlx->map.x, &mlx->map.y);
+	mlx->img4 = mlx_xpm_file_to_image(mlx->mlx, p4, &mlx->map.x, &mlx->map.y);
+
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1, 0, 0);
+}
+
 void	init_mlx(t_mlx *mlx)
 {
 	if ((mlx->map.x * 60) > 2560)
@@ -60,8 +80,8 @@ void	init_mlx(t_mlx *mlx)
 	if ((mlx->map.y * 60) > 1440)
 		exit(0);
 	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, mlx->map.x * 60, mlx->map.y * 60, "so_long");
-	mlx->img = mlx_new_image(mlx->mlx, mlx->map.x * 60, mlx->map.y * 60);
+	mlx->win = mlx_new_window(mlx->mlx, mlx->map.x * 100, mlx->map.y * 100, "so_long");
+	load_images(mlx);
 }
 
 void	setup(t_mlx *mlx)
