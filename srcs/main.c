@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 11:18:36 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 12:44:04 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,25 +125,35 @@ void	setup(t_mlx *mlx)
 // 	system("leaks so_long");
 // }
 
-int	main(int argc, char **argv)
+void	parseo_term(int argc, char *argv)
 {
-	t_mlx	mlx;
-	
+	int i;
+
+	i = ft_strlen(argv) - 4;
 	if (argc != 2)
 	{
 		ft_printf("%s\n", "Numero de argumentos invalido");
 		exit(0);
 	}
-	if (!strchr(argv[1], '.'))
+	if (!ft_strchr(argv, '.'))
 	{
 		ft_printf("%s\n", "Mapa invalido");
 		exit(0);
 	}
-	if (strcmp(strchr(argv[1], '.'), ".ber"))
+
+	if (ft_strncmp(&argv[i], ".ber", i))
 	{
 		ft_printf("%s\n", "Extension invalida");
 		exit(0);
 	}
+}
+
+
+int	main(int argc, char **argv)
+{
+	t_mlx	mlx;
+	
+	parseo_term(argc, argv[1]);
 	open_map(argv[1], &mlx);
 	init_mlx(&mlx);
 	setup(&mlx);

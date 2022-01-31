@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 11:14:36 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 11:48:59 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct	map {
 	char	**map;
 	int		x;
 	int		y;
+	int		numcoll;
+	
 } t_map;
 
 typedef struct	img {

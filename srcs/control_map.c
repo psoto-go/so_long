@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:09:45 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/28 18:27:26 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 11:34:21 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,17 +99,19 @@ int	check_collects(char **map)
 	return (flag);
 }
 
-int	check_num_collects2(int c, int e, int p)
+int	check_num_collects2(int c, int e, int p, t_mlx *mlx)
 {
 	int flag;
 
 	flag = 0;
 	if (c == 0 || e == 0 || p != 1)
 		flag = 1;
+	if (c != 0)
+		mlx->map.numcoll = c;
 	return (flag);
 }
 
-int	check_num_collects(char **map)
+int	check_num_collects(char **map, t_mlx *mlx)
 {
 	int	i;
 	int	j;
@@ -135,7 +137,7 @@ int	check_num_collects(char **map)
 			j++;
 		}
 	}
-	return (check_num_collects2(c, e, p));
+	return (check_num_collects2(c, e, p, mlx));
 }
 
 int check_rectangle(char **map)
@@ -148,7 +150,7 @@ int check_rectangle(char **map)
 	return (flag);
 }
 
-int	check_parser_map(char **map)
+int	check_parser_map(char **map, t_mlx *mlx)
 {
 	int	flag;
 
@@ -157,7 +159,7 @@ int	check_parser_map(char **map)
 	flag += check_rectangle(map);
 	flag += check_walls(map);
 	flag += check_collects(map);
-	flag += check_num_collects(map);
+	flag += check_num_collects(map, mlx);
 	return (flag);
 }
 
@@ -182,7 +184,7 @@ void	open_map(char *argv, t_mlx *mlx)
 	if (!*map)
 		ft_map_error();
 	free(str);
-	if (check_parser_map(map) == 0)
+	if (check_parser_map(map, mlx) == 0)
 	{
 		mlx->map.map = map;
 		mlx->map.x = ft_strlen(*map);
