@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:09:45 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 17:56:07 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 20:07:41 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,22 @@ int	check_parser_map(char **map, t_mlx *mlx)
 	return (flag);
 }
 
+void	check_salto(char *str)
+{
+	int i;
+	
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n' && str[i + 1] == '\n')
+		{
+			free(str);
+			ft_error(1);
+		}
+		i++;
+	}
+}
+
 void	open_map(char *argv, t_mlx *mlx)
 {
 	int		file;
@@ -81,6 +97,7 @@ void	open_map(char *argv, t_mlx *mlx)
 		line = get_next_line(file);
 	}
 	free(line);
+	check_salto(str);
 	map = ft_split(str, '\n');
 	if (!*map)
 		ft_error(1);
