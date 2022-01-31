@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 18:02:35 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:11:41 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct img {
 	void	*i3;
 	void	*i4;
 	void	*i5;
+	void	*i6;
 }	t_img;
 
 typedef struct player {
@@ -62,6 +63,8 @@ void	open_map(char *argv, t_mlx *mlx);
 void	ft_error(int num);
 
 void	load_map(t_mlx *mlx);
+
+void	load_map2(t_mlx *m);
 
 void	load_images(t_mlx *mlx);
 
@@ -96,7 +99,8 @@ int		check_rectangle(char **map);
 int		check_num_collects(char **map, t_mlx *mlx);
 
 void	open_map(char *argv, t_mlx *mlx);
-void	a(void);
+
+int		check_caca(int signo, char letra, t_mlx *mlx);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 18:03:37 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:17:13 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ int	main(int argc, char **argv)
 	open_map(argv[1], &mlx);
 	init_mlx(&mlx);
 	setup(&mlx);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:27:29 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 17:33:07 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:06:56 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	check_collects(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C'
-			&& map[i][j] != 'E' && map[i][j] != 'P')
+			&& map[i][j] != 'E' && map[i][j] != 'P' && map[i][j] != 'M')
 				flag = 1;
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 12:57:41 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 17:58:19 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:51:51 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void	parseo_term(int argc, char *argv)
 		ft_error(3);
 	if (ft_strncmp(&argv[i], ".ber", 4))
 		ft_error(4);
-
 }
