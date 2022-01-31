@@ -6,12 +6,13 @@
 #    By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/21 16:57:12 by psoto-go          #+#    #+#              #
-#    Updated: 2022/01/31 13:02:00 by psoto-go         ###   ########.fr        #
+#    Updated: 2022/01/31 13:50:00 by psoto-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS			=	srcs/main.c srcs/control_map.c srcs/errors.c \
-					srcs/print_map.c srcs/control_term.c srcs/init_mlx.c
+					srcs/print_map.c srcs/control_term.c srcs/init_mlx.c \
+					srcs/move_player.c srcs/exit_mlx.c
 OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc

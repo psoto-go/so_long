@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 13:01:31 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 13:49:42 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,11 @@ int	key_hook_out(int x ,int y)
 	return (0);
 }
 
-int		exit_mlx(t_mlx *mlx)
-{
-	mlx_destroy_window(mlx->mlx, mlx->win);
-	exit(0);
-	return(0);
-}
-
-int 	check_key(int keycode, t_mlx *mlx)
-{
-	if (keycode == 53)
-		exit_mlx(mlx);
-	return (0);
-}
-
 void	setup(t_mlx *mlx)
 {
 	mlx_hook(mlx->win, 2, 1L<<0, check_key, mlx);
 	mlx_hook(mlx->win, 17, 1L<<2, exit_mlx, mlx);
+	search_player(mlx);
 	mlx_loop(mlx->mlx);
 }
 
