@@ -6,13 +6,13 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 12:55:37 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 13:41:29 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 17:48:18 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	load_images(t_mlx *mlx)
+void	load_images(t_mlx *m)
 {
 	char	*p1;
 	char	*p0;
@@ -25,37 +25,67 @@ void	load_images(t_mlx *mlx)
 	c = "img/surf.xpm";
 	e = "img/mar.xpm";
 	p = "img/mario.xpm";
-
-	mlx->img.img1 = mlx_xpm_file_to_image(mlx->mlx, p1, &mlx->map.x, &mlx->map.y);
-	mlx->img.img2 = mlx_xpm_file_to_image(mlx->mlx, p0, &mlx->map.x, &mlx->map.y);
-	mlx->img.img3 = mlx_xpm_file_to_image(mlx->mlx, c, &mlx->map.x, &mlx->map.y);
-	mlx->img.img4 = mlx_xpm_file_to_image(mlx->mlx, e, &mlx->map.x, &mlx->map.y);
-	mlx->img.img5 = mlx_xpm_file_to_image(mlx->mlx, p, &mlx->map.x, &mlx->map.y);
+	m->i.i1 = mlx_xpm_file_to_image(m->mlx, p1, &m->map.x, &m->map.y);
+	m->i.i2 = mlx_xpm_file_to_image(m->mlx, p0, &m->map.x, &m->map.y);
+	m->i.i3 = mlx_xpm_file_to_image(m->mlx, c, &m->map.x, &m->map.y);
+	m->i.i4 = mlx_xpm_file_to_image(m->mlx, e, &m->map.x, &m->map.y);
+	m->i.i5 = mlx_xpm_file_to_image(m->mlx, p, &m->map.x, &m->map.y);
 }
 
-void	load_map(t_mlx *mlx)
+void	load_map(t_mlx *m)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+	int	n;
 
 	i = 0;
-	while (mlx->map.map[i])
+	n = 100;
+	while (m->map.map[i])
 	{
 		j = 0;
-		while(mlx->map.map[i][j])
+		while (m->map.map[i][j])
 		{
-			if (mlx->map.map[i][j] == '1')
-				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img1, j * 100, i * 100 );
-			else if (mlx->map.map[i][j] == '0')
-				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img2, j * 100, i * 100 );
-			else if (mlx->map.map[i][j] == 'C')
-				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img3, j * 100, i * 100 );
-			else if (mlx->map.map[i][j] == 'E')
-				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img4, j * 100, i * 100 );
-			else if (mlx->map.map[i][j] == 'P')
-				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img5, j * 100, i * 100 );
+			if (m->map.map[i][j] == '1')
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i1, j * n, i * n);
+			else if (m->map.map[i][j] == '0')
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
+			else if (m->map.map[i][j] == 'C')
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i3, j * n, i * n);
+			else if (m->map.map[i][j] == 'E')
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i4, j * n, i * n);
+			else if (m->map.map[i][j] == 'P')
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i5, j * n, i * n);
 			j++;
 		}
 		i++;
 	}
+}
+
+int	search_player(t_mlx *mlx)
+{
+	int	i;
+	int	j;
+	int	flag;
+
+	i = 0;
+	flag = 0;
+	while (mlx->map.map)
+	{
+		j = 0;
+		while (mlx->map.map[i][j])
+		{
+			if (mlx->map.map[i][j] == 'P')
+			{
+				mlx->player.x = i;
+				mlx->player.y = j;
+				flag = 1;
+				break ;
+			}
+			j++;
+		}
+		if (flag == 1)
+			break ;
+		i++;
+	}
+	return (flag);
 }
