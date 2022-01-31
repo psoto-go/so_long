@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/28 20:15:04 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 10:23:24 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,39 @@ void	load_images(t_mlx *mlx)
 {
 	char	*p1;
 	char	*p2;
-	char	*p3;
-	char	*p4;
+	// char	*p3;
+	// char	*p4;
+	int i;
+	int j;
 
 	p1 = "img/surf.xpm";
-	p2 = "img/surf1.xpm";
-	p3 = "img/surf2.xpm";
-	p4 = "img/surf3.xpm";
+	p2 = "img/surfista.xpm";
+	// p3 = "img/surf2.xpm";
+	// p4 = "img/surfista.xpm";
 
 	mlx->img1 = mlx_xpm_file_to_image(mlx->mlx, p1, &mlx->map.x, &mlx->map.y);
 	mlx->img2 = mlx_xpm_file_to_image(mlx->mlx, p2, &mlx->map.x, &mlx->map.y);
-	mlx->img3 = mlx_xpm_file_to_image(mlx->mlx, p3, &mlx->map.x, &mlx->map.y);
-	mlx->img4 = mlx_xpm_file_to_image(mlx->mlx, p4, &mlx->map.x, &mlx->map.y);
+	// mlx->img3 = mlx_xpm_file_to_image(mlx->mlx, p3, &mlx->map.x, &mlx->map.y);
+	// mlx->img4 = mlx_xpm_file_to_image(mlx->mlx, p4, &mlx->map.x, &mlx->map.y);
 
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1, 0, 0);
+	i = 0;
+	while (mlx->map.map[i])
+	{
+		j = 0;
+		while(mlx->map.map[i][j])
+		{
+			if (mlx->map.map[i][j] == '1')
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1, j * 100, i * 100 );
+			else if (mlx->map.map[i][j] == '0')
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img2, j * 100, i * 100 );
+			j++;
+		}
+		i++;
+		// break ;
+	}
+	
+
+	// mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img4, 0, 0);
 }
 
 void	init_mlx(t_mlx *mlx)
