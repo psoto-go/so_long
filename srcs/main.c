@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 12:44:04 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 12:48:07 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void	parseo_term(int argc, char *argv)
 		exit(0);
 	}
 
-	if (ft_strncmp(&argv[i], ".ber", i))
+	if (ft_strncmp(&argv[i], ".ber", 4))
 	{
 		ft_printf("%s\n", "Extension invalida");
 		exit(0);
