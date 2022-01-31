@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 10:23:24 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/01/31 11:18:36 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,28 @@ int 	check_key(int keycode, t_mlx *mlx)
 void	load_images(t_mlx *mlx)
 {
 	char	*p1;
-	char	*p2;
-	// char	*p3;
-	// char	*p4;
+	char	*p0;
+	char	*c;
+	char	*e;
+	char	*p;
+
+	p1 = "img/cubo.xpm";
+	p0 = "img/cesped.xpm";
+	c = "img/surf.xpm";
+	e = "img/mar.xpm";
+	p = "img/mario.xpm";
+
+	mlx->img.img1 = mlx_xpm_file_to_image(mlx->mlx, p1, &mlx->map.x, &mlx->map.y);
+	mlx->img.img2 = mlx_xpm_file_to_image(mlx->mlx, p0, &mlx->map.x, &mlx->map.y);
+	mlx->img.img3 = mlx_xpm_file_to_image(mlx->mlx, c, &mlx->map.x, &mlx->map.y);
+	mlx->img.img4 = mlx_xpm_file_to_image(mlx->mlx, e, &mlx->map.x, &mlx->map.y);
+	mlx->img.img5 = mlx_xpm_file_to_image(mlx->mlx, p, &mlx->map.x, &mlx->map.y);
+}
+
+void	load_map(t_mlx *mlx)
+{
 	int i;
 	int j;
-
-	p1 = "img/surf.xpm";
-	p2 = "img/surfista.xpm";
-	// p3 = "img/surf2.xpm";
-	// p4 = "img/surfista.xpm";
-
-	mlx->img1 = mlx_xpm_file_to_image(mlx->mlx, p1, &mlx->map.x, &mlx->map.y);
-	mlx->img2 = mlx_xpm_file_to_image(mlx->mlx, p2, &mlx->map.x, &mlx->map.y);
-	// mlx->img3 = mlx_xpm_file_to_image(mlx->mlx, p3, &mlx->map.x, &mlx->map.y);
-	// mlx->img4 = mlx_xpm_file_to_image(mlx->mlx, p4, &mlx->map.x, &mlx->map.y);
 
 	i = 0;
 	while (mlx->map.map[i])
@@ -79,28 +86,31 @@ void	load_images(t_mlx *mlx)
 		while(mlx->map.map[i][j])
 		{
 			if (mlx->map.map[i][j] == '1')
-				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img1, j * 100, i * 100 );
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img1, j * 100, i * 100 );
 			else if (mlx->map.map[i][j] == '0')
-				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img2, j * 100, i * 100 );
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img2, j * 100, i * 100 );
+			else if (mlx->map.map[i][j] == 'C')
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img3, j * 100, i * 100 );
+			else if (mlx->map.map[i][j] == 'E')
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img4, j * 100, i * 100 );
+			else if (mlx->map.map[i][j] == 'P')
+				mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img.img5, j * 100, i * 100 );
 			j++;
 		}
 		i++;
-		// break ;
 	}
-	
-
-	// mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img4, 0, 0);
 }
 
 void	init_mlx(t_mlx *mlx)
 {
-	if ((mlx->map.x * 60) > 2560)
+	if ((mlx->map.x * 100) > 2560)
 		exit(0);
-	if ((mlx->map.y * 60) > 1440)
+	if ((mlx->map.y * 100) > 1440)
 		exit(0);
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, mlx->map.x * 100, mlx->map.y * 100, "so_long");
 	load_images(mlx);
+	load_map(mlx);
 }
 
 void	setup(t_mlx *mlx)
