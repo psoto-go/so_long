@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:03:17 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 19:20:35 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 00:30:14 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_move_up(t_mlx *mlx)
 		if (check_caca(1, 'x', mlx) == 1)
 		{
 			mlx->player.moves += 1;
-			exit_mlx(mlx);
+			ft_exit(1, mlx);
 		}
 		else
 		{
@@ -37,7 +37,7 @@ void	check_move_up(t_mlx *mlx)
 			mlx->map.map[mlx->player.x][mlx->player.y] = '0';
 			mlx->player.x = mlx->player.x - 1;
 			if ((c == 1 && mlx->map.numcoll == 0))
-				exit_mlx(mlx);
+				ft_exit(2, mlx);
 			mlx->player.moves += 1;
 		}
 		load_map(mlx);
@@ -61,7 +61,7 @@ void	check_move_down(t_mlx *mlx)
 		if (check_caca(0, 'x', mlx) == 1)
 		{
 			mlx->player.moves += 1;
-			exit_mlx(mlx);
+			ft_exit(1, mlx);
 		}
 		else
 		{
@@ -69,7 +69,7 @@ void	check_move_down(t_mlx *mlx)
 			mlx->map.map[mlx->player.x][mlx->player.y] = '0';
 			mlx->player.x = mlx->player.x + 1;
 			if ((c == 1 && mlx->map.numcoll == 0))
-				exit_mlx(mlx);
+				ft_exit(2, mlx);
 			mlx->player.moves += 1;
 			
 		}
@@ -94,15 +94,16 @@ void	check_move_right(t_mlx *mlx)
 		if (check_caca(0, 'y', mlx) == 1)
 		{
 			mlx->player.moves += 1;
-			exit_mlx(mlx);
+			ft_exit(1, mlx);
 		}
 		else
 		{
+			mlx->player.dir = 0;
 			mlx->map.map[mlx->player.x][mlx->player.y + 1] = 'P';
 			mlx->map.map[mlx->player.x][mlx->player.y] = '0';
 			mlx->player.y = mlx->player.y + 1;
 			if ((c == 1 && mlx->map.numcoll == 0))
-				exit_mlx(mlx);
+				ft_exit(2, mlx);
 			mlx->player.moves += 1;
 			
 		}
@@ -127,15 +128,16 @@ void	check_move_left(t_mlx *mlx)
 		if (check_caca(1, 'y', mlx) == 1)
 		{
 			mlx->player.moves += 1;
-			exit_mlx(mlx);
+			ft_exit(1, mlx);
 		}
 		else
 		{
+			mlx->player.dir = 1;
 			mlx->map.map[mlx->player.x][mlx->player.y - 1] = 'P';
 			mlx->map.map[mlx->player.x][mlx->player.y] = '0';
 			mlx->player.y = mlx->player.y - 1;
 			if ((c == 1 && mlx->map.numcoll == 0))
-				exit_mlx(mlx);
+				ft_exit(2, mlx);
 			mlx->player.moves += 1;
 		}
 		load_map(mlx);

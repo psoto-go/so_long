@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 19:11:41 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 00:30:39 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include "../libft/libft.h"
+# include "../mlx/mlx.h"
 
 typedef struct map {
 	char	**map;
@@ -38,29 +39,33 @@ typedef struct img {
 	void	*i4;
 	void	*i5;
 	void	*i6;
+	void	*i7;
 }	t_img;
 
 typedef struct player {
 	int		x;
 	int		y;
 	int		moves;
+	int		dir;
 }	t_player;
+
+typedef struct enemy {
+	int		x;
+	int		y;
+}	t_enemy;
 
 typedef struct mlx {
 	void		*mlx;
 	void		*win;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
 	t_map		map;
 	t_img		i;
 	t_player	player;
+	t_enemy		enemy;
 }	t_mlx;
 
 void	open_map(char *argv, t_mlx *mlx);
 
-void	ft_error(int num);
+void	ft_error(int num, t_mlx *mlx);
 
 void	load_map(t_mlx *mlx);
 
@@ -68,7 +73,7 @@ void	load_map2(t_mlx *m);
 
 void	load_images(t_mlx *mlx);
 
-void	parseo_term(int argc, char *argv);
+void	parseo_term(int argc, char **argv, t_mlx *mlx);
 
 void	init_mlx(t_mlx *mlx);
 
@@ -76,32 +81,33 @@ int		search_player(t_mlx *mlx);
 
 int		check_key(int keycode, t_mlx *mlx);
 
-int		exit_mlx(t_mlx *mlx);
-
 int		keys(int keycode, t_mlx *mlx);
 
 void	check_move(int k, t_mlx *mlx);
 
 size_t	ft_strlen_ptr_ptr(char **s);
 
-int		check_walls(char **map);
+void	check_walls(char **map, t_mlx *mlx);
 
-int		check_len_map(char **map);
+void	check_len_map(char **map, t_mlx *mlx);
 
-int		check_collects(char **map);
+void	check_collects(char **map, t_mlx *mlx);
 
-int		check_num_collects2(int c, int e, int p, t_mlx *mlx);
+void	check_num_collects2(int c, int e, int p, t_mlx *mlx);
 
-int		check_parser_map(char **map, t_mlx *mlx);
+void	check_parser_map(char **map, t_mlx *mlx);
 
-int		check_rectangle(char **map);
-
-int		check_num_collects(char **map, t_mlx *mlx);
+void	check_rectangle(char **map, t_mlx *mlx);
 
 void	open_map(char *argv, t_mlx *mlx);
 
 int		check_caca(int signo, char letra, t_mlx *mlx);
 
+void	crear_cuadro(t_mlx *mlx);
+
+int		ft_exit(int num, t_mlx *mlx);
+
+void	a(void);
 
 
 #endif

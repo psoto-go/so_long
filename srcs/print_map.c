@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 12:55:37 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/01/31 19:12:23 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 00:31:08 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ void	load_images(t_mlx *m)
 	m->i.i4 = "img/mar.xpm";
 	m->i.i5 = "img/mario.xpm";
 	m->i.i6 = "img/caca.xpm";
+	m->i.i7 = "img/mario2.xpm";
 	m->i.i1 = mlx_xpm_file_to_image(m->mlx, m->i.i1, &m->map.x, &m->map.y);
 	m->i.i2 = mlx_xpm_file_to_image(m->mlx, m->i.i2, &m->map.x, &m->map.y);
 	m->i.i3 = mlx_xpm_file_to_image(m->mlx, m->i.i3, &m->map.x, &m->map.y);
 	m->i.i4 = mlx_xpm_file_to_image(m->mlx, m->i.i4, &m->map.x, &m->map.y);
 	m->i.i5 = mlx_xpm_file_to_image(m->mlx, m->i.i5, &m->map.x, &m->map.y);
 	m->i.i6 = mlx_xpm_file_to_image(m->mlx, m->i.i6, &m->map.x, &m->map.y);
+	m->i.i7 = mlx_xpm_file_to_image(m->mlx, m->i.i7, &m->map.x, &m->map.y);
 }
 
 void	load_map2(t_mlx *m)
@@ -42,7 +44,13 @@ void	load_map2(t_mlx *m)
 		while (m->map.map[i][j])
 		{
 			if (m->map.map[i][j] == 'P')
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i5, j * n, i * n);
+			{
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
+				if (m->player.dir == 0)
+					mlx_put_image_to_window(m->mlx, m->win, m->i.i5, (j - 0.2) * n, (i - 0.04) * n);
+				else
+					mlx_put_image_to_window(m->mlx, m->win, m->i.i7, (j - 0.2) * n, (i - 0.04) * n);
+			}
 			else if (m->map.map[i][j] == 'M')
 				mlx_put_image_to_window(m->mlx, m->win, m->i.i6, j * n, i * n);
 			j++;
