@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 12:55:37 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 01:11:47 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:55:33 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void	load_images(t_mlx *m)
 {
 	m->i.i1 = "img/cubo.xpm";
 	m->i.i2 = "img/cesped.xpm";
-	m->i.i3 = "img/surf.xpm";
-	m->i.i4 = "img/mar.xpm";
+	m->i.i3 = "img/coins.xpm";
+	m->i.i4 = "img/puerta.xpm";
 	m->i.i5 = "img/mario.xpm";
 	m->i.i6 = "img/caca.xpm";
 	m->i.i7 = "img/mario2.xpm";
 	m->i.i8 = "img/malo.xpm";
+	m->i.i9 = "img/cinta1.xpm";
+	m->i.i10 = "img/coin2.xpm";
 	m->i.i1 = mlx_xpm_file_to_image(m->mlx, m->i.i1, &m->map.x, &m->map.y);
 	m->i.i2 = mlx_xpm_file_to_image(m->mlx, m->i.i2, &m->map.x, &m->map.y);
 	m->i.i3 = mlx_xpm_file_to_image(m->mlx, m->i.i3, &m->map.x, &m->map.y);
@@ -30,6 +32,8 @@ void	load_images(t_mlx *m)
 	m->i.i6 = mlx_xpm_file_to_image(m->mlx, m->i.i6, &m->map.x, &m->map.y);
 	m->i.i7 = mlx_xpm_file_to_image(m->mlx, m->i.i7, &m->map.x, &m->map.y);
 	m->i.i8 = mlx_xpm_file_to_image(m->mlx, m->i.i8, &m->map.x, &m->map.y);
+	m->i.i9 = mlx_xpm_file_to_image(m->mlx, m->i.i9, &m->map.x, &m->map.y);
+	m->i.i10 = mlx_xpm_file_to_image(m->mlx, m->i.i10, &m->map.x, &m->map.y);
 }
 
 void	load_map2(t_mlx *m)
@@ -54,7 +58,10 @@ void	load_map2(t_mlx *m)
 					mlx_put_image_to_window(m->mlx, m->win, m->i.i7, (j - 0.2) * n, (i - 0.04) * n);
 			}
 			else if (m->map.map[i][j] == 'M')
+			{
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
 				mlx_put_image_to_window(m->mlx, m->win, m->i.i6, j * n, i * n);
+			}
 			else if (m->map.map[i][j] == 'Z')
 			{
 				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
@@ -64,6 +71,8 @@ void	load_map2(t_mlx *m)
 		}
 		i++;
 	}
+	// mlx_loop_hook(mlx->mlx, crear_cuadro , mlx);
+	crear_cuadro(m);
 }
 
 void	load_map(t_mlx *m)
@@ -84,9 +93,20 @@ void	load_map(t_mlx *m)
 			else if (m->map.map[i][j] == '0')
 				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
 			else if (m->map.map[i][j] == 'C')
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i3, j * n, i * n);
+			{
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
+				if (m->dir_coin == 0)
+					mlx_put_image_to_window(m->mlx, m->win, m->i.i3, j * n, i * n);
+				else
+					mlx_put_image_to_window(m->mlx, m->win, m->i.i10, j * n, i * n);
+			}
 			else if (m->map.map[i][j] == 'E')
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i4, j * n, i * n);
+			{
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i4, (j - 0.15) * n, (i - 0.2) * n);
+				if (m->map.numcoll != 0)
+					mlx_put_image_to_window(m->mlx, m->win, m->i.i9, j * n, i * n);
+			}
 			j++;
 		}
 		i++;

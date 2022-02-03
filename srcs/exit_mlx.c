@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:48:56 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 02:56:51 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 17:14:12 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	ft_delete(t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, mlx->i.i6);
 	mlx_destroy_image(mlx->mlx, mlx->i.i7);
 	mlx_destroy_image(mlx->mlx, mlx->i.i8);
+	mlx_destroy_image(mlx->mlx, mlx->i.i9);
+	mlx_destroy_image(mlx->mlx, mlx->i.i10);
 	mlx_clear_window(mlx->mlx, mlx->win);
 	mlx_destroy_window(mlx->mlx, mlx->win);
 }

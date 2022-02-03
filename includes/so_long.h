@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 02:24:03 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 16:52:10 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct img {
 	void	*i6;
 	void	*i7;
 	void	*i8;
+	void	*i9;
+	void	*i10;
 }	t_img;
 
 typedef struct player {
@@ -54,11 +56,13 @@ typedef struct enemy {
 	int		x;
 	int		y;
 	int		dir;
+	int		time;
 }	t_enemy;
 
 typedef struct mlx {
 	void		*mlx;
 	void		*win;
+	int			dir_coin;
 	t_map		map;
 	t_img		i;
 	t_player	player;
@@ -105,11 +109,11 @@ void	open_map(char *argv, t_mlx *mlx);
 
 int		check_caca(int signo, char letra, t_mlx *mlx);
 
-void	crear_cuadro(t_mlx *mlx);
+int	crear_cuadro(t_mlx *mlx);
 
 int		ft_exit(int num, t_mlx *mlx);
 
-void	check_time(t_mlx *mlx);
+int	check_time(t_mlx *mlx);
 
 int	search_enemy(t_mlx *mlx);
 
