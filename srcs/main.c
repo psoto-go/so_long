@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 00:34:11 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 01:50:17 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	setup(t_mlx *mlx)
 	mlx_hook(mlx->win, 2, 1L << 0, check_key, mlx);
 	mlx_hook(mlx->win, 17, 1L << 2, ft_exit, mlx);
 	search_player(mlx);
+	search_enemy(mlx);
 	mlx_key_hook(mlx->win, keys, mlx);
 	mlx_loop(mlx->mlx);
 }
@@ -37,6 +38,7 @@ void	init_values(t_mlx *mlx)
 	mlx->i.i5 = NULL;
 	mlx->i.i6 = NULL;
 	mlx->i.i7 = NULL;
+	mlx->i.i8 = NULL;
 	mlx->map.map = NULL;
 	mlx->map.numcoll = 0;
 	mlx->map.x = 0;
@@ -45,6 +47,9 @@ void	init_values(t_mlx *mlx)
 	mlx->player.x = 0;
 	mlx->player.y = 0;
 	mlx->player.dir = 0;
+	mlx->enemy.x = 0;
+	mlx->enemy.y = 0;
+	mlx->enemy.dir = 0;
 
 }
 

@@ -6,11 +6,12 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 21:06:46 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/02 21:47:19 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 02:46:44 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
 
 int	search_enemy(t_mlx *mlx)
 {
@@ -25,7 +26,7 @@ int	search_enemy(t_mlx *mlx)
 		j = 0;
 		while (mlx->map.map[i][j])
 		{
-			if (mlx->map.map[i][j] == 'C')
+			if (mlx->map.map[i][j] == 'Z')
 			{
 				mlx->enemy.x = i;
 				mlx->enemy.y = j;
@@ -38,16 +39,94 @@ int	search_enemy(t_mlx *mlx)
 			break ;
 		i++;
 	}
-	return (flag);
+	return(flag);
 }
 
 void	check_move_right_enemy(t_mlx *mlx)
 {
-	if (mlx->map.map[mlx->enemy.x][mlx->enemy.y + 1] == '0')
+	if (mlx->map.map[mlx->enemy.x][mlx->enemy.y + 1] == 'P')
+		ft_exit(1, mlx);
+	if (mlx->map.map[mlx->enemy.x][mlx->enemy.y + 1] == '0' && mlx->enemy.dir == 0)
 	{
-		mlx->map.map[mlx->enemy.x][mlx->enemy.y + 1] = 'C';
+		mlx->map.map[mlx->enemy.x][mlx->enemy.y + 1] = 'Z';
 		mlx->map.map[mlx->enemy.x][mlx->enemy.y] = '0';
 		mlx->enemy.y = mlx->enemy.y + 1;
 	}
-		load_map(mlx);
+	else
+		mlx->enemy.dir = rand() % 4;
+	// if (mlx->map.map[mlx->enemy.x][mlx->enemy.y + 1] == 'P')
+	// 	ft_exit(1, mlx);
+	
+	load_map(mlx);
+}
+
+void	check_move_left_enemy(t_mlx *mlx)
+{
+	if (mlx->map.map[mlx->enemy.x][mlx->enemy.y - 1] == 'P')
+		ft_exit(1, mlx);
+	if (mlx->map.map[mlx->enemy.x][mlx->enemy.y - 1] == '0' && mlx->enemy.dir == 1)
+	{
+		mlx->map.map[mlx->enemy.x][mlx->enemy.y - 1] = 'Z';
+		mlx->map.map[mlx->enemy.x][mlx->enemy.y] = '0';
+		mlx->enemy.y = mlx->enemy.y - 1;
+	}
+	else
+		mlx->enemy.dir = rand() % 4;
+	// if (mlx->map.map[mlx->enemy.x][mlx->enemy.y - 1] == 'P')
+	// 	ft_exit(1, mlx);
+	search_enemy(mlx);
+	load_map(mlx);
+}
+
+void	check_move_down_enemy(t_mlx *mlx)
+{
+	if (mlx->map.map[mlx->enemy.x + 1][mlx->enemy.y] == 'P')
+		ft_exit(1, mlx);
+	if (mlx->map.map[mlx->enemy.x + 1][mlx->enemy.y] == '0' && mlx->enemy.dir == 3)
+	{
+		mlx->map.map[mlx->enemy.x + 1][mlx->enemy.y] = 'Z';
+		mlx->map.map[mlx->enemy.x][mlx->enemy.y] = '0';
+		mlx->enemy.x = mlx->enemy.x + 1;
+	}
+	else
+		mlx->enemy.dir = rand() % 4;
+	// if (mlx->map.map[mlx->enemy.x + 1][mlx->enemy.y] == 'P')
+	// 	ft_exit(1, mlx);
+	
+	search_enemy(mlx);
+	load_map(mlx);
+}
+
+void	check_move_top_enemy(t_mlx *mlx)
+{
+	if (mlx->map.map[mlx->enemy.x - 1][mlx->enemy.y] == 'P')
+		ft_exit(1, mlx);
+	if (mlx->map.map[mlx->enemy.x - 1][mlx->enemy.y] == '0' && mlx->enemy.dir == 2)
+	{
+		mlx->map.map[mlx->enemy.x - 1][mlx->enemy.y] = 'Z';
+		mlx->map.map[mlx->enemy.x][mlx->enemy.y] = '0';
+		mlx->enemy.x = mlx->enemy.x - 1;
+
+	}
+	else
+		mlx->enemy.dir = rand() % 4;
+	// if (mlx->map.map[mlx->enemy.x - 1][mlx->enemy.y] == 'P')
+	// 	ft_exit(1, mlx);
+	
+	search_enemy(mlx);
+	load_map(mlx);
+}
+
+void	check_time(t_mlx *mlx)
+{
+	mlx->enemy.dir = rand() % 4;
+	if (mlx->enemy.dir == 0)
+		check_move_right_enemy(mlx);
+	else if (mlx->enemy.dir == 1)
+		check_move_left_enemy(mlx);
+	else if (mlx->enemy.dir == 2)
+		check_move_top_enemy(mlx);
+	else if (mlx->enemy.dir == 3)
+		check_move_down_enemy(mlx);
+	
 }

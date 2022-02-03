@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:03:17 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 00:30:14 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 02:52:50 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_move_up(t_mlx *mlx)
 		if (mlx->map.map[mlx->player.x - 1][mlx->player.y] == 'E' &&
 		mlx->map.numcoll != 0)
 			return ;
-		if (check_caca(1, 'x', mlx) == 1)
+		if (check_caca(1, 'x', mlx) == 1 || mlx->map.map[mlx->player.x - 1][mlx->player.y] == 'Z')
 		{
 			mlx->player.moves += 1;
 			ft_exit(1, mlx);
@@ -58,7 +58,7 @@ void	check_move_down(t_mlx *mlx)
 		if (mlx->map.map[mlx->player.x + 1][mlx->player.y] == 'E' &&
 		mlx->map.numcoll != 0)
 			return ;
-		if (check_caca(0, 'x', mlx) == 1)
+		if (check_caca(0, 'x', mlx) == 1 || mlx->map.map[mlx->player.x + 1][mlx->player.y] == 'Z')
 		{
 			mlx->player.moves += 1;
 			ft_exit(1, mlx);
@@ -91,7 +91,7 @@ void	check_move_right(t_mlx *mlx)
 		if (mlx->map.map[mlx->player.x][mlx->player.y + 1] == 'E' &&
 		mlx->map.numcoll != 0)
 			return ;
-		if (check_caca(0, 'y', mlx) == 1)
+		if (check_caca(0, 'y', mlx) == 1 || mlx->map.map[mlx->player.x][mlx->player.y + 1] == 'Z')
 		{
 			mlx->player.moves += 1;
 			ft_exit(1, mlx);
@@ -125,7 +125,7 @@ void	check_move_left(t_mlx *mlx)
 		if (mlx->map.map[mlx->player.x][mlx->player.y - 1] == 'E' &&
 		mlx->map.numcoll != 0)
 			return ;
-		if (check_caca(1, 'y', mlx) == 1)
+		if (check_caca(1, 'y', mlx) == 1 || mlx->map.map[mlx->player.x][mlx->player.y - 1] == 'Z')
 		{
 			mlx->player.moves += 1;
 			ft_exit(1, mlx);
@@ -154,4 +154,6 @@ void	check_move(int k, t_mlx *mlx)
 		check_move_right(mlx);
 	else if (k == 123 || k == 0)
 		check_move_left(mlx);
+	check_time(mlx);
+	
 }

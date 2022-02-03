@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 00:30:39 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 02:24:03 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct img {
 	void	*i5;
 	void	*i6;
 	void	*i7;
+	void	*i8;
 }	t_img;
 
 typedef struct player {
@@ -52,6 +53,7 @@ typedef struct player {
 typedef struct enemy {
 	int		x;
 	int		y;
+	int		dir;
 }	t_enemy;
 
 typedef struct mlx {
@@ -106,6 +108,10 @@ int		check_caca(int signo, char letra, t_mlx *mlx);
 void	crear_cuadro(t_mlx *mlx);
 
 int		ft_exit(int num, t_mlx *mlx);
+
+void	check_time(t_mlx *mlx);
+
+int	search_enemy(t_mlx *mlx);
 
 void	a(void);
 

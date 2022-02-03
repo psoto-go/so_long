@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 12:55:37 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 00:31:08 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/03 01:11:47 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	load_images(t_mlx *m)
 	m->i.i5 = "img/mario.xpm";
 	m->i.i6 = "img/caca.xpm";
 	m->i.i7 = "img/mario2.xpm";
+	m->i.i8 = "img/malo.xpm";
 	m->i.i1 = mlx_xpm_file_to_image(m->mlx, m->i.i1, &m->map.x, &m->map.y);
 	m->i.i2 = mlx_xpm_file_to_image(m->mlx, m->i.i2, &m->map.x, &m->map.y);
 	m->i.i3 = mlx_xpm_file_to_image(m->mlx, m->i.i3, &m->map.x, &m->map.y);
@@ -28,6 +29,7 @@ void	load_images(t_mlx *m)
 	m->i.i5 = mlx_xpm_file_to_image(m->mlx, m->i.i5, &m->map.x, &m->map.y);
 	m->i.i6 = mlx_xpm_file_to_image(m->mlx, m->i.i6, &m->map.x, &m->map.y);
 	m->i.i7 = mlx_xpm_file_to_image(m->mlx, m->i.i7, &m->map.x, &m->map.y);
+	m->i.i8 = mlx_xpm_file_to_image(m->mlx, m->i.i8, &m->map.x, &m->map.y);
 }
 
 void	load_map2(t_mlx *m)
@@ -53,6 +55,11 @@ void	load_map2(t_mlx *m)
 			}
 			else if (m->map.map[i][j] == 'M')
 				mlx_put_image_to_window(m->mlx, m->win, m->i.i6, j * n, i * n);
+			else if (m->map.map[i][j] == 'Z')
+			{
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
+				mlx_put_image_to_window(m->mlx, m->win, m->i.i8, j * n, i * n);
+			}
 			j++;
 		}
 		i++;
