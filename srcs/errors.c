@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:44:26 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/02 23:52:28 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:21:40 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,13 @@ void	ft_error(int num, t_mlx *mlx)
 		ft_printf("Error: %s\n", "El mapa no esta cerrado por muros");
 	else if (num == 9)
 		ft_printf("Error: %s\n", "El mapa tiene un caracter no permitido");
+	else if (num == 10)
+		ft_printf("Error: %s\n", "El mapa no tiene coleccionables");
+	else if (num == 11)
+		ft_printf("Error: %s\n", "El mapa no tiene puerta de salida");
+	else if (num == 12)
+		ft_printf("Error: %s\n", "El mapa tiene que tener un solo jugador");
+	else if (num == 13)
+		ft_printf("Error: %s\n", "El mapa tiene que tener un enemigo en movimiento");
 	ft_exit(0, mlx);
 }

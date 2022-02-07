@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 16:52:10 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/07 18:12:11 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	check_len_map(char **map, t_mlx *mlx);
 
 void	check_collects(char **map, t_mlx *mlx);
 
-void	check_num_collects2(int c, int e, int p, t_mlx *mlx);
+void	check_num_collects2(int c, int e, int p, int z, t_mlx *mlx);
 
 void	check_parser_map(char **map, t_mlx *mlx);
 
