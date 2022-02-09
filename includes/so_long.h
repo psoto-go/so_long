@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/07 18:12:11 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:42:56 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <limits.h>
 # include <fcntl.h>
 # include <unistd.h>
-// # include <mlx.h>
+# include <mlx.h>
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
 
@@ -99,7 +99,11 @@ void	check_len_map(char **map, t_mlx *mlx);
 
 void	check_collects(char **map, t_mlx *mlx);
 
-void	check_num_collects2(int c, int e, int p, int z, t_mlx *mlx);
+void	check_num_collects(char **map, t_mlx *mlx);
+
+void	check_num_collects2(int p, int z, t_mlx *mlx);
+
+void	check_num_collects3(int c, int e, t_mlx *mlx);
 
 void	check_parser_map(char **map, t_mlx *mlx);
 
@@ -109,15 +113,26 @@ void	open_map(char *argv, t_mlx *mlx);
 
 int		check_caca(int signo, char letra, t_mlx *mlx);
 
-int	crear_cuadro(t_mlx *mlx);
+int		crear_cuadro(t_mlx *mlx);
 
 int		ft_exit(int num, t_mlx *mlx);
 
-int	check_time(t_mlx *mlx);
+void	print_m(t_mlx *m, int j, int i, int n);
 
-int	search_enemy(t_mlx *mlx);
+void	print_z(t_mlx *m, int j, int i, int n);
 
-void	a(void);
+void	print_p(t_mlx *m, int j, int i, int n);
 
+void	print_c(t_mlx *m, int j, int i, int n);
+
+void	print_e(t_mlx *m, int j, int i, int n);
+
+int		check_time(t_mlx *mlx);
+
+void	change_p(t_mlx *mlx, int flag, int sim);
+
+void	change_p2(t_mlx *mlx, int flag, int sim);
+
+int		search_enemy(t_mlx *mlx);
 
 #endif

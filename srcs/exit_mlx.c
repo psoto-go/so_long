@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:48:56 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 17:14:12 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:24:54 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	free_map(t_mlx *mlx)
 	free(mlx->map.map);
 }
 
-
 int	ft_exit(int num, t_mlx *mlx)
 {
 	if (num == 1)
@@ -59,8 +58,6 @@ int	ft_exit(int num, t_mlx *mlx)
 		free_map(mlx);
 	if (mlx->mlx)
 		ft_delete(mlx);
-	// a();
-
 	exit(0);
-	return(0);
+	return (0);
 }

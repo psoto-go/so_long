@@ -6,11 +6,23 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:44:26 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/07 18:21:40 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:26:16 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	ft_error2(int num, t_mlx *mlx)
+{
+	if (num == 11)
+		ft_printf("Error: %s\n", "El mapa no tiene puerta de salida");
+	else if (num == 12)
+		ft_printf("Error: %s\n", "El mapa tiene que tener un solo jugador");
+	else if (num == 13)
+		ft_printf("Error: %s\n",
+			"El mapa tiene que tener un enemigo en movimiento");
+	ft_exit(0, mlx);
+}
 
 void	ft_error(int num, t_mlx *mlx)
 {
@@ -34,11 +46,5 @@ void	ft_error(int num, t_mlx *mlx)
 		ft_printf("Error: %s\n", "El mapa tiene un caracter no permitido");
 	else if (num == 10)
 		ft_printf("Error: %s\n", "El mapa no tiene coleccionables");
-	else if (num == 11)
-		ft_printf("Error: %s\n", "El mapa no tiene puerta de salida");
-	else if (num == 12)
-		ft_printf("Error: %s\n", "El mapa tiene que tener un solo jugador");
-	else if (num == 13)
-		ft_printf("Error: %s\n", "El mapa tiene que tener un enemigo en movimiento");
-	ft_exit(0, mlx);
+	ft_error2(num, mlx);
 }

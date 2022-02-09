@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:27:29 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/07 18:20:01 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:39:11 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,18 +93,4 @@ void	check_collects(char **map, t_mlx *mlx)
 		}
 		i++;
 	}
-}
-
-void	check_num_collects2(int c, int e, int p, int z, t_mlx *mlx)
-{
-	if (c == 0)
-		ft_error(10, mlx);
-	if (e == 0)
-		ft_error(11, mlx);
-	if (p != 1)
-		ft_error(12, mlx);
-	if (z == 0)
-		ft_error(13, mlx);
-	if (c != 0)
-		mlx->map.numcoll = c;
 }

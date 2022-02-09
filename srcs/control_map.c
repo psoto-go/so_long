@@ -6,44 +6,11 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:09:45 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/07 18:12:18 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:38:50 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	check_num_collects(char **map, t_mlx *mlx)
-{
-	int	i;
-	int	j;
-	int	c;
-	int	e;
-	int	p;
-	int z;
-
-	i = 0;
-	c = 0;
-	e = 0;
-	p = 0;
-	z = 0;
-	while (map[++i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'C')
-				c += 1;
-			else if (map[i][j] == 'E')
-				e += 1;
-			else if (map[i][j] == 'P')
-				p += 1;
-			else if (map[i][j] == 'Z')
-				z += 1;
-			j++;
-		}
-	}
-	check_num_collects2(c, e, p,z, mlx);
-}
 
 void	check_rectangle(char **map, t_mlx *mlx)
 {
@@ -62,8 +29,8 @@ void	check_parser_map(char **map, t_mlx *mlx)
 
 void	check_salto(char *str, t_mlx *mlx)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (str[i])
 	{

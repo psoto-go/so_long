@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 12:55:37 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/03 16:55:33 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 11:47:21 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,15 @@ void	load_map2(t_mlx *m)
 		while (m->map.map[i][j])
 		{
 			if (m->map.map[i][j] == 'P')
-			{
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
-				if (m->player.dir == 0)
-					mlx_put_image_to_window(m->mlx, m->win, m->i.i5, (j - 0.2) * n, (i - 0.04) * n);
-				else
-					mlx_put_image_to_window(m->mlx, m->win, m->i.i7, (j - 0.2) * n, (i - 0.04) * n);
-			}
+				print_p(m, j, i, n);
 			else if (m->map.map[i][j] == 'M')
-			{
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i6, j * n, i * n);
-			}
+				print_m(m, j, i, n);
 			else if (m->map.map[i][j] == 'Z')
-			{
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i8, j * n, i * n);
-			}
+				print_z(m, j, i, n);
 			j++;
 		}
 		i++;
 	}
-	// mlx_loop_hook(mlx->mlx, crear_cuadro , mlx);
 	crear_cuadro(m);
 }
 
@@ -93,20 +80,9 @@ void	load_map(t_mlx *m)
 			else if (m->map.map[i][j] == '0')
 				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
 			else if (m->map.map[i][j] == 'C')
-			{
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
-				if (m->dir_coin == 0)
-					mlx_put_image_to_window(m->mlx, m->win, m->i.i3, j * n, i * n);
-				else
-					mlx_put_image_to_window(m->mlx, m->win, m->i.i10, j * n, i * n);
-			}
+				print_c(m, j, i, n);
 			else if (m->map.map[i][j] == 'E')
-			{
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i2, j * n, i * n);
-				mlx_put_image_to_window(m->mlx, m->win, m->i.i4, (j - 0.15) * n, (i - 0.2) * n);
-				if (m->map.numcoll != 0)
-					mlx_put_image_to_window(m->mlx, m->win, m->i.i9, j * n, i * n);
-			}
+				print_e(m, j, i, n);
 			j++;
 		}
 		i++;
