@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.c                                             :+:      :+:    :+:   */
+/*   control_term.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/31 15:20:02 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/11 20:10:21 by psoto-go         ###   ########.fr       */
+/*   Created: 2022/01/31 12:57:41 by psoto-go          #+#    #+#             */
+/*   Updated: 2022/02/03 00:54:12 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	keys(int k, t_mlx *mlx)
+void	parseo_term(int argc, char **argv, t_mlx *mlx)
 {
-	int	c;
+	int	i;
 
-	c = 0;
-	if ((k >= 123 && k <= 126) || (k >= 0 && k <= 2) || (k == 13))
-	{
-		c = mlx->player.moves;
-		check_move(k, mlx);
-		if (mlx->player.moves != c)
-		{
-			ft_printf("Numero de movimientos: %d \n", mlx->player.moves);
-			c = mlx->player.moves;
-		}
-	}
-	return (0);
+	if (argc != 2)
+		ft_error(2, mlx);
+	if (!ft_strchr(argv[1], '.'))
+		ft_error(3, mlx);
+	i = ft_strlen(argv[1]) - 4;
+	if (ft_strncmp(&argv[1][i], ".ber", 4))
+		ft_error(4, mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 12:55:37 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/11 20:05:39 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 11:47:21 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,15 @@ void	load_map2(t_mlx *m)
 		{
 			if (m->map.map[i][j] == 'P')
 				print_p(m, j, i, n);
+			else if (m->map.map[i][j] == 'M')
+				print_m(m, j, i, n);
+			else if (m->map.map[i][j] == 'Z')
+				print_z(m, j, i, n);
 			j++;
 		}
 		i++;
 	}
+	crear_cuadro(m);
 }
 
 void	load_map(t_mlx *m)
@@ -112,4 +117,29 @@ int	search_player(t_mlx *mlx)
 		i++;
 	}
 	return (flag);
+}
+
+int	check_caca(int signo, char letra, t_mlx *mlx)
+{
+	if (signo == 1 && letra == 'x')
+	{
+		if (mlx->map.map[mlx->player.x - 1][mlx->player.y] == 'M')
+			return (1);
+	}
+	else if (signo == 0 && letra == 'x')
+	{
+		if (mlx->map.map[mlx->player.x + 1][mlx->player.y] == 'M')
+			return (1);
+	}
+	else if (signo == 1 && letra == 'y')
+	{
+		if (mlx->map.map[mlx->player.x][mlx->player.y - 1] == 'M')
+			return (1);
+	}
+	else if (signo == 0 && letra == 'y')
+	{
+		if (mlx->map.map[mlx->player.x][mlx->player.y + 1] == 'M')
+			return (1);
+	}
+	return (0);
 }

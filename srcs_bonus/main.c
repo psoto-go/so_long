@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:43:34 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/11 19:49:51 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 13:03:15 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	setup(t_mlx *mlx)
 	mlx_hook(mlx->win, 2, 1L << 0, check_key, mlx);
 	mlx_hook(mlx->win, 17, 1L << 2, check_keyx, mlx);
 	search_player(mlx);
+	search_enemy(mlx);
+	mlx_loop_hook(mlx->mlx, check_time, mlx);
 	mlx_key_hook(mlx->win, keys, mlx);
 	mlx_loop(mlx->mlx);
 }

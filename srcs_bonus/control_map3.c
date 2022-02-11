@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 12:38:25 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/11 19:38:54 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:40:40 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	check_num_collects2(int p, int z, t_mlx *mlx)
 {
 	if (p != 1)
 		ft_error(12, mlx);
-	z = 0;
+	if (z != 1)
+		ft_error(13, mlx);
 }
 
 void	check_num_collects3(int c, int e, t_mlx *mlx)
@@ -46,6 +47,8 @@ void	check_num_collects_check(char **map, t_mlx *mlx)
 		{
 			if (map[i][j] == 'P')
 				p += 1;
+			else if (map[i][j] == 'Z')
+				z += 1;
 			j++;
 		}
 	}

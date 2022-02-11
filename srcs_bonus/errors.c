@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 15:44:26 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/11 19:40:40 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/09 12:26:16 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	ft_error2(int num, t_mlx *mlx)
 	else if (num == 12)
 		ft_printf("Error: %s\n", "El mapa tiene que tener un solo jugador");
 	else if (num == 13)
-		ft_printf("Error: %s\n", "El ancho del mapa se pasa del ancho de la pantalla");
+		ft_printf("Error: %s\n",
+			"El mapa tiene que tener un enemigo en movimiento");
 	ft_exit(0, mlx);
 }
 
