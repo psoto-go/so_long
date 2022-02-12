@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 13:03:17 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/11 19:55:52 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/12 10:47:48 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	check_move_down(t_mlx *mlx, int c)
 		c = 1;
 	if (mlx->map.map[mlx->player.x + 1][mlx->player.y] != '1')
 	{
-		if (mlx->map.map[mlx->player.x - 1][mlx->player.y] == 'C')
+		if (mlx->map.map[mlx->player.x + 1][mlx->player.y] == 'C')
 			mlx->map.numcoll--;
 		if (mlx->map.map[mlx->player.x + 1][mlx->player.y] == 'E' &&
 		mlx->map.numcoll != 0)
@@ -60,7 +60,7 @@ void	check_move_right(t_mlx *mlx, int c)
 		c = 1;
 	if (mlx->map.map[mlx->player.x][mlx->player.y + 1] != '1')
 	{
-		if (mlx->map.map[mlx->player.x - 1][mlx->player.y] == 'C')
+		if (mlx->map.map[mlx->player.x][mlx->player.y + 1] == 'C')
 			mlx->map.numcoll--;
 		if (mlx->map.map[mlx->player.x][mlx->player.y + 1] == 'E' &&
 		mlx->map.numcoll != 0)
@@ -81,7 +81,7 @@ void	check_move_left(t_mlx *mlx, int c)
 		c = 1;
 	if (mlx->map.map[mlx->player.x][mlx->player.y - 1] != '1')
 	{
-		if (mlx->map.map[mlx->player.x - 1][mlx->player.y] == 'C')
+		if (mlx->map.map[mlx->player.x][mlx->player.y - 1] == 'C')
 			mlx->map.numcoll--;
 		if (mlx->map.map[mlx->player.x][mlx->player.y - 1] == 'E' &&
 		mlx->map.numcoll != 0)
