@@ -6,7 +6,7 @@
 /*   By: psoto-go <psoto-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:01:51 by psoto-go          #+#    #+#             */
-/*   Updated: 2022/02/09 12:42:56 by psoto-go         ###   ########.fr       */
+/*   Updated: 2022/02/12 10:30:28 by psoto-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	init_mlx(t_mlx *mlx);
 int		search_player(t_mlx *mlx);
 
 int		check_key(int keycode, t_mlx *mlx);
+
+int		check_keyx(t_mlx *mlx);
 
 int		keys(int keycode, t_mlx *mlx);
 
